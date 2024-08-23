@@ -1,0 +1,21 @@
+pipeline{
+    agent any
+    stages{
+        stage("code"){
+            steps{
+                git "https://github.com/Praveenchoudary/Praveenchoudary-docker-compose-pipeline.git"
+            }
+        }
+        stage("build"){
+           steps{
+                sh "docker-compose build"
+            }
+        }
+        stage("compose up"){
+            steps{
+                sh "docker-compose up -d"
+            }
+        }
+    }
+    
+}
